@@ -1,0 +1,57 @@
+<div class="w-full h-full grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4  overflow-y-scroll p-4">
+
+  <div class="col-span-full grid grid-cols-2 md:grid-cols-6">
+
+   <select class="select select-bordered" (change)="changeDistrict($event)" >
+      <option value="" disabled selected>District</option> 
+      <option>All</option>
+      <option *ngFor="let district of districts">{{district.name}}</option>
+   </select>
+
+   <select class="select select-bordered ">
+      <option value="" disabled selected>SubDistrict</option> 
+      <option>All</option>
+      <option *ngFor="let district of selectedSubdistricts">{{district.name}}</option>
+   </select>
+
+   <select class="select select-bordered">
+      <option>Hight to low</option>
+      <option>Low to heigh</option>
+   </select>
+
+   <select class="select select-bordered">
+      <option>All</option>
+      <option>Electronics</option>
+   </select>
+
+   <div class="btn-group col-span-2">
+   <input type="text" class="input input-bordered w-full" placeholder="search"> 
+   <button class="btn btn-primary">search</button>
+
+    </div>
+  </div>
+
+
+<div class="card bg-base-100 shadow-xl" *ngFor="let product of products$|async">
+  <figure><img [src]="product.pictureURI" alt="Shoes" /></figure>
+  <div class="card-body">
+      <h2 class="card-title line-clamp-1">{{product.name}}</h2>
+      <p> Asking Price: {{product.prices|currency}}</p>
+      <p> Highest Bid: {{product.highestBid|currency}}</p>
+    <div class="card-actions justify-end">
+      <button class="btn btn-primary" [routerLink]="'/products/ldsk'">Show Details</button>
+    </div>
+  </div>
+</div>
+
+  <div class="btn-group col-span-full flex" >
+  <button class="btn">first</button>
+  <button class="btn flex-1"></button>
+  <button class="btn">«</button>
+  <button class="btn">Page 22</button>
+  <button class="btn">»</button>
+  <button class="btn flex-1"></button>
+  <button class="btn">last</button>
+</div>
+
+</div>

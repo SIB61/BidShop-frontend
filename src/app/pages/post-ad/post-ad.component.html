@@ -1,0 +1,51 @@
+<div class="w-full h-full flex justify-center items-center overflow-y-scroll p-10">
+
+<div class="card card-side bg-base-100 shadow-xl">
+  <!-- <figure><img src="https://placeimg.com/200/400/arch" alt="Movie"/></figure> -->
+  <div class="card-body">
+    <h2 class="card-title">Post Your Ad.</h2>
+    <form [formGroup]="form" class="grid grid-cols-1 md:grid-cols-2  gap-2">
+
+        <input type="text" formControlName="name" class="input input-bordered col-span-full" placeholder="Product name">
+
+        <input type="text" formControlName="price" class="input input-bordered" placeholder="Asking price">
+
+        <select formControlName="catagory" class="select select-bordered">
+          <option selected disabled >Catagory</option>
+          <option [ngValue]="catagory.id" *ngFor="let catagory of catagories$|async">{{catagory.name}}</option>
+        </select>
+
+        <textarea formControlName="description" class="input input-bordered md:col-span-2 h-20" placeholder="Description"></textarea>
+
+        <div class="form-control">
+        <label class="label-text">Buying date(approximate)</label>
+        <input type="date" formControlName="buying_date" class="input input-bordered">
+        </div>
+
+        <div class="form-control">
+        <label class="label-text">Bidding End Date</label>
+        <input type="date" formControlName="bidding_end_date" class="input input-bordered">
+        </div>
+
+        <select formControlName="district" (change)="changeDistrict()" class="select select-bordered" placeholder="District">
+          <option value="" disabled selected>District</option>
+          <option *ngFor="let district of districts" [ngValue]="district.name">{{district.name}}</option>
+        </select>
+
+        <select formControlName="sub_district" class="select select-bordered" placeholder="Sub District">
+          <option value="" disabled selected>Sub District</option>
+          <option *ngFor="let district of selectedSubdistricts" [ngValue]="district.name">{{district.name}}</option>
+        </select>
+
+        <input formControlName="address" class="input input-bordered md:col-span-2" placeholder="Detailed address">
+
+        <input type="file" (change)="onFileChange($event)" accept="images/*" class="file-input file-input-bordered md:col-span-2" placeholder="Add Photo">
+
+      </form>
+    <div class="card-actions justify-end">
+      <button class="btn " [ngClass]="form.invalid?'btn-disabled':'btn-primary'" (click)="post()">Post</button>
+    </div>
+  </div>
+</div>
+
+</div>

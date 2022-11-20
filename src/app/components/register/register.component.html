@@ -1,0 +1,22 @@
+<input type="checkbox" id="registration" class="modal-toggle"/>
+<div class="modal">
+  <div class="modal-box">
+    <p class="text-xl font-bold mb-4">Sign Up In Bidshop</p>
+      <form [formGroup]="form" class="w-full grid grid-cols-1 gap-2">
+          <input  formControlName="name" class="input input-bordered" placeholder="name"> 
+          <input  formControlName="email" class="input input-bordered" placeholder="email">
+          <input  formControlName="phone" class="input input-bordered" placeholder="phone">
+          <select name="" id="" class="select select-bordered" formControlName="district" >
+          <option value="" disabled selected>district</option>
+          <option value="" [ngValue]="district.name" *ngFor="let district of districts">{{district.name}}</option>
+          </select>
+          <input  formControlName="address" class="input input-bordered" placeholder="address">
+          <input  formControlName="password" class="input input-bordered" placeholder="password">
+      </form>
+    <div class="modal-action">
+      <label for="registration" class="btn btn-ghost">cancel</label>
+      <button class="btn" [ngClass]="form.invalid? 'btn-disabled':'btn-primary'" (click)="register()" [disabled]="form.invalid">sign up</button>
+    </div>
+  </div>
+</div>
+
