@@ -1,35 +1,35 @@
 <div class="w-full h-full grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4  overflow-y-scroll p-4">
 
-  <div class="col-span-full grid grid-cols-2 md:grid-cols-6">
+  <form [formGroup]="form" class="col-span-full grid grid-cols-2 md:grid-cols-6">
 
-   <select class="select select-bordered" (change)="changeDistrict($event)" >
-      <option value="" disabled selected>District</option> 
-      <option>All</option>
-      <option *ngFor="let district of districts">{{district.name}}</option>
+   <select formControlName="district" class="select select-bordered" (change)="changeDistrict()" >
+      <option ngValue="" disabled selected>District</option> 
+      <option ngValue="all">All</option>
+      <option [ngValue]="district.name" *ngFor="let district of districts">{{district.name}}</option>
    </select>
 
-   <select class="select select-bordered ">
+   <select formControlName="sub_district" class="select select-bordered ">
       <option value="" disabled selected>SubDistrict</option> 
-      <option>All</option>
-      <option *ngFor="let district of selectedSubdistricts">{{district.name}}</option>
+      <option ngValue="all">All</option>
+      <option [ngValue]="district.id" *ngFor="let district of selectedSubdistricts">{{district.name}}</option>
    </select>
 
-   <select class="select select-bordered">
-      <option>Hight to low</option>
-      <option>Low to heigh</option>
+   <select class="select select-bordered" formControlName="order">
+      <option ngValue="" selected disabled>order</option>
+      <option ngValue="asc">Hight to low</option>
+      <option ngValue="dsc">Low to heigh</option>
    </select>
 
-   <select class="select select-bordered">
-      <option>All</option>
-      <option>Electronics</option>
+   <select class="select select-bordered" formControlName="catagory">
+      <option ngValue="" selected disabled>Catagory</option>
+      <option *ngFor="let catagory of catagories$|async" [ngValue]="catagory.id">{{catagory.name}}</option>
    </select>
 
    <div class="btn-group col-span-2">
-   <input type="text" class="input input-bordered w-full" placeholder="search"> 
-   <button class="btn btn-primary">search</button>
-
+   <input type="text" formControlName="key" class="input input-bordered w-full" placeholder="search"> 
+   <button class="btn btn-primary" (click)="search()">search</button>
     </div>
-  </div>
+  </form>
 
 
 <div class="card bg-base-100 shadow-xl" *ngFor="let product of products$|async">
@@ -39,7 +39,7 @@
       <p> Asking Price: {{product.prices|currency}}</p>
       <p> Highest Bid: {{product.highestBid|currency}}</p>
     <div class="card-actions justify-end">
-      <button class="btn btn-primary" [routerLink]="'/products/ldsk'">Show Details</button>
+      <button class="btn btn-primary" [routerLink]="'/products/'+product.id">Show Details</button>
     </div>
   </div>
 </div>

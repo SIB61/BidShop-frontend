@@ -1,9 +1,11 @@
-    <div class="menu p-4 w-80 bg-base-200 text-base-content border-r h-full">
+<div class="menu p-4 w-80 bg-base-200 text-base-content border-r h-full">
       <button class="btn btn-ghost">BidShop</button>
       <div class="divider"></div>
       <label for="my-drawer-2"  class="btn" [routerLink]="nav.route" [ngClass]="router.url === nav.route ? 'btn-primary':'btn-ghost'" *ngFor="let nav of navs; let i = index">
         {{nav.title}}
       </label>
-    </div>
+      <div class="divider">more</div>
+      <label for="my-drawer-2" class="btn" [ngClass]="router.url === '' ? 'btn-primary':'btn-ghost'">about us</label>
+</div>
 
 

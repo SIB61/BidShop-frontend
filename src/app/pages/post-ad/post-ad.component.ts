@@ -60,7 +60,7 @@ post(){
     formData.append('BuyingDate',formValue.buying_date)
     formData.append('BiddingEndDate',formValue.bidding_end_date)
     formData.append('District',formValue.district)
-    formData.append('SubDistrict',formValue.sub_districts)
+    formData.append('SubDistrict',formValue.sub_district)
     formData.append('Address',formValue.address)
     formData.append('ProductPhotos',formValue.imageSource)
     this.http.post(environment.base_url+ApiEndpoints.PostAd,formData).subscribe(res=>console.log(res))

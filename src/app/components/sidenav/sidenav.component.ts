@@ -9,10 +9,12 @@ import { Router } from '@angular/router';
 export class SidenavComponent {
   constructor(public router:Router){}
   navs = [
-    {title:"Home",route:"/home"},
-    {title:"Sell",route:"/post-ad"},
-    {title:"Cart",route:"#"},
+    {title:"home",route:"/home"},
+    {title:"sell",route:"/post-ad"},
+    {title:"posts",route:"#"},
+    {title:"cart",route:"#"},
+    // {title:"",route:"#"},
     {title:"Chat",route:"#"},
-    {title:'profile',route:"#"}
+    {title:'profile',route:"#"},
   ]
 }
