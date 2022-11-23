@@ -17,6 +17,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
 import { CacheInterceptor } from './interceptors/cache.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +36,8 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
     FontAwesomeModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule
   ],
   providers: [NgxImageCompressService,
      {
@@ -43,11 +45,11 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
       useClass:TokenInterceptor,
       multi:true
     },
-    {
-      provide:HTTP_INTERCEPTORS,
-      useClass:CacheInterceptor,
-      multi:true
-    },
+    // {
+    //   provide:HTTP_INTERCEPTORS,
+    //   useClass:CacheInterceptor,
+    //   multi:true
+    // },
     {
       provide:HTTP_INTERCEPTORS,
       useClass:LoggingInterceptor,

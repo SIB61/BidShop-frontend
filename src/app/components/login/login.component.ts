@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { tap } from 'rxjs';
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
+import { every, tap } from 'rxjs';
 import { ApiResponse } from 'src/app/models/Response.model';
 import { environment } from 'src/environments/environment';
 
@@ -27,4 +28,15 @@ constructor(fb:FormBuilder,private http:HttpClient){
         console.log(res)
       })).subscribe()
   }
+
+
+
+  change(event:any){
+    console.log(event.target.value)
+  }
+
+
+
 }
+
+

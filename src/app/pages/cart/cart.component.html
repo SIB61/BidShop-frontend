@@ -1,0 +1,41 @@
+<div class="overflow-x-auto w-full" *ngIf="data$|async as data">
+  <table class="table w-full">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Asking Price</th>
+        <th>Highest bid</th>
+        <th>My bid</th>
+        <th>Bidding End Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- row 1 -->
+      <tr *ngFor="let d of data" class="hover" >
+        <td>
+          {{d.name}} 
+        </td>
+        <td>{{d.productPrices|currency}}</td>
+        <td>{{d.highestBid|currency}}</td>
+        <td>
+          {{d.myBid|currency}} 
+        </td>
+        <td>
+          {{d.biddingEndDate|date}} 
+        </td>
+      </tr>
+    </tbody>
+    <!-- foot -->
+    <tfoot>
+      <tr>
+        <th>Product Name</th>
+        <th>Asking Price</th>
+        <th>Highest Bid</th>
+        <th>My Bid</th>
+        <th>Bidding End date</th>
+      </tr>
+    </tfoot>
+    
+  </table>
+</div>

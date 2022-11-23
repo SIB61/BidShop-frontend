@@ -12,7 +12,7 @@ export class SidenavComponent {
     {title:"home",route:"/home"},
     {title:"sell",route:"/post-ad"},
     {title:"posts",route:"#"},
-    {title:"cart",route:"#"},
+    {title:"cart",route:"/cart"},
     // {title:"",route:"#"},
     {title:"Chat",route:"#"},
     {title:'profile',route:"#"},

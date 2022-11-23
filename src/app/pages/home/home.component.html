@@ -1,4 +1,4 @@
-<div class="w-full h-full grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4  overflow-y-scroll p-4">
+<div class="w-full h-full grid gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4  overflow-y-scroll p-4" *ngIf="products$|async as products">
 
   <form [formGroup]="form" class="col-span-full grid grid-cols-2 md:grid-cols-6">
 
@@ -28,11 +28,11 @@
    <div class="btn-group col-span-2">
    <input type="text" formControlName="key" class="input input-bordered w-full" placeholder="search"> 
    <button class="btn btn-primary" (click)="search()">search</button>
-    </div>
+   </div>
   </form>
 
 
-<div class="card bg-base-100 shadow-xl" *ngFor="let product of products$|async">
+<div class="card bg-base-100 shadow-xl" *ngFor="let product of products">
   <figure><img [src]="product.pictureURI" alt="Shoes" /></figure>
   <div class="card-body">
       <h2 class="card-title line-clamp-1">{{product.name}}</h2>
@@ -44,7 +44,7 @@
   </div>
 </div>
 
-  <div class="btn-group col-span-full flex" >
+<div class="btn-group col-span-full flex" >
   <button class="btn">first</button>
   <button class="btn flex-1"></button>
   <button class="btn">«</button>

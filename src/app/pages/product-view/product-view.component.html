@@ -1,31 +1,50 @@
-<!-- <div class="w-full h-full flex flex-col overflow-y-scroll p-10 md:flex-row justify-evenly items-center"> -->
+<div *ngIf="product$|async as product" class="w-full h-full grid grid-cols-2">
+<div class="overflow-y-scroll p-4">
+
+<div class="card w-full h-max overflow-y-scroll bg-base-100 shadow-xl">
+  <figure><img [src]="product.photos[0]" alt="Shoes" /></figure>
+  <div class="card-body">
+      <h2 class="card-title">{{product.name}}</h2>
+        <p>Catagory: <span class="font-bold"> {{product.typeName}}</span></p>
+      <p>Buying date: <span class="font-bold"> {{product.buyingDate|date}}</span> </p>
+      <p>Bid ending date: <span class="font-bold"> {{product.biddingEndDate|date}}</span> </p>
+      <p>Asking Price: <span class="font-bold"> {{product.prices|currency}}</span> </p>
+      <p> Highest Bid: <span class="font-bold"> {{product.highestBid|currency}}</span> </p>
+      <p >Discription: <span class="font-bold"> {{product.description}}</span> </p>
+  </div>
+</div>
+  </div>
+<div class="flex justify-center items-center">
+<div class="card bg-base-100 shadow-xl">
+  <div class="card-body">
+    <h2 class="card-title line-clamp-1">Place Your Bid</h2>
+    <input type="text" class="input input-bordered" [(ngModel)]="price">
+    <div class="card-actions">
+      <button class="btn w-full" (click)="bid()" [ngClass]="logedIn?'btn-primary':'btn-disabled'">Place</button>
+    </div>
+  </div>
+</div>
+</div>
+
+</div>
+
+<!-- <div *ngIf="product$|async as product" class="w-full h-full gap-4 grid md:grid-cols-2 md:grid-rows-2"> -->
 <!---->
-<!-- <div class="card w-96 bg-base-100 shadow-xl"> -->
-<!--   <figure><img src="https://placeimg.com/400/225/arch" alt="Shoes" /></figure> -->
-<!--   <div class="card-body"> -->
-<!--     <h2 class="card-title">Walton 1200cc Fridge</h2> -->
-<!--       <p>Catagory: Electronics</p> -->
-<!--       <p >Discription: This is new. no internal problem.kdsksdkjajk</p> -->
-<!--       <p>Used for: 3yrs</p> -->
-<!--       <p> Asking Price: {{'400'}}</p> -->
-<!--       <p> Highest Bid: {{'400'}}</p> -->
-<!--   </div> -->
-<!-- </div> -->
-<!---->
-<!---->
-<!-- <div class="card bg-base-100 shadow-xl"> -->
-<!--   <div class="card-body"> -->
-<!--     <h2 class="card-title line-clamp-1">Place Your Bid</h2> -->
-<!--     <input type="text" class="input input-bordered"> -->
-<!--     <div class="card-actions"> -->
-<!--       <button class="btn btn-primary w-full">Place</button> -->
+<!--   <div class="rounded-md overflow-hidden p-10"> -->
+<!--     <div class="rounded-xl overflow-hidden shadow-2xl w-max h-max"> -->
+<!--     <img [src]="product.photos[0]" alt="" class="max-w-full max-h-full" > -->
 <!--     </div> -->
 <!--   </div> -->
-<!-- </div> -->
+<!---->
+<!--   <div class="p-10"> -->
 <!---->
 <!---->
+<!--   </div> -->
+<!--   <div class="p-10"> -->
+<!--     <h1>{{product.name}}</h1>  -->
+<!--   </div> -->
+<!---->
+<!--     <div> -->
+<!---->
+<!--   </div> -->
 <!-- </div> -->
-
-<div>
-  {{product$ | async}}
-</div>

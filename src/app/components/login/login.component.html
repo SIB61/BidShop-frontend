@@ -1,4 +1,4 @@
-<input type="checkbox" id="login" class="modal-toggle"/>
+<input type="checkbox"  id="login" class="modal-toggle"/>
 <div class="modal">
   <div class="modal-box relative">
     <p class="text-xl mb-4 font-bold">Sign In</p>
@@ -8,7 +8,7 @@
     </form>
     <div class="modal-action">
     <label for="login" class="btn btn-ghost">Cancel</label>
-    <button class="btn" [ngClass]="form.invalid? 'btn-disabled':'btn-primary'" (click)="signIn()" >Sign In</button>
+    <label for="login" class="btn" [ngClass]="form.invalid? 'btn-disabled':'btn-primary'" (click)="signIn()" >Sign In</label>
     </div>
   </div>
 </div>
