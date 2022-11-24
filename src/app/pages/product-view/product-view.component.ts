@@ -25,7 +25,7 @@ constructor(private route: ActivatedRoute,private http:HttpClient){
 bid(){
     if(this.price && this.price != 0)
     this.http.post(environment.base_url+"Bid",{price:this.price,productId:this.id}).subscribe(_=>{
-      this.price=undefined
+      window.location.reload()
     })
   }
 }
