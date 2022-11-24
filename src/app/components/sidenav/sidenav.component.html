@@ -1,5 +1,5 @@
 <div class="menu p-4 w-80 bg-base-200 text-base-content border-r h-full">
-      <button class="btn btn-ghost">BidShop</button>
+      <label class="btn btn-ghost" for="my-drawer-2">BidShop</label>
       <div class="divider"></div>
       <label for="my-drawer-2"  class="btn" [routerLink]="nav.route" [ngClass]="router.url === nav.route ? 'btn-primary':'btn-ghost'" *ngFor="let nav of navs; let i = index">
         {{nav.title}}

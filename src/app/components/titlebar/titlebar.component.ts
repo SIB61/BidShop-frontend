@@ -20,12 +20,12 @@ export class TitlebarComponent {
     {title:"posts",route:"/posts"},
     {title:"cart",route:"/cart"},
     {title:"About Us",route:"/about-us"},
-    {title:"payment",route:"/payment"}
+    {title:"payment",route:"/payment"},
     // {title:"",route:"#"},
     // {title:"Chat",route:"#"},
     // {title:'profile',route:"#"},
   ]
-  nv = () => this.navList.find((v:any)=>v.route === this.router.url)
+  nv = () => this.navList.find((v:any)=>v.route === this.router.url)? this.navList.find((v:any)=>v.route === this.router.url):{title:"Product"}
 
 faCart = faShoppingCart
 faProfile = faUser
