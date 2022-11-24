@@ -41,7 +41,7 @@
           <button class="btn btn-circle btn-ghost tooltip" data-tip="delete" (click)="delete(d.id)" >
             <fa-icon [icon]="faDelete"></fa-icon>
           </button>
-          <button class="btn btn-circle btn-ghost tooltip" [ngClass]="d.biddingStatus?'text-red-600':'text-green-600'" data-tip="toggle bidding" (click)="d.biddingStatus?stop(d.id):on(d.id)">
+          <button class="btn btn-circle btn-ghost tooltip" [ngClass]="d.biddingStatus?'text-green-600':'text-red-600'" data-tip="toggle bidding" (click)="d.biddingStatus?stop(d.id):on(d.id)">
             <fa-icon [icon]="faStop"></fa-icon>
           </button>
         </th>
