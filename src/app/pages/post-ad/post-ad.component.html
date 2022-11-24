@@ -9,7 +9,7 @@
         <input type="text" formControlName="price" class="input input-bordered" placeholder="Asking price">
 
         <select formControlName="catagory" class="select select-bordered">
-          <option selected disabled >Catagory</option>
+          <option value="" selected disabled >Catagory</option>
           <option [ngValue]="catagory.id" *ngFor="let catagory of catagories$|async">{{catagory.name}}</option>
         </select>
 

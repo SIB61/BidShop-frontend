@@ -7,14 +7,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidenav.component.scss']
 })
 export class SidenavComponent {
+  
   constructor(public router:Router){}
   navs = [
     {title:"home",route:"/home"},
     {title:"sell",route:"/post-ad"},
-    {title:"posts",route:"#"},
+    {title:"posts",route:"/posts"},
     {title:"cart",route:"/cart"},
+    {title:"payment",route:"/payment"}
     // {title:"",route:"#"},
-    {title:"Chat",route:"#"},
-    {title:'profile',route:"#"},
+    // {title:"Chat",route:"#"},
+    // {title:'profile',route:"#"},
   ]
+
+  name = localStorage.getItem("user_name")
+  email = localStorage.getItem("user_email")
+
+  logout(){
+   localStorage.clear()
+    window.location.reload()
+  }
 }

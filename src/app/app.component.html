@@ -5,18 +5,16 @@
       <div class="w-full h-full relative overflow-y-hidden">
       <app-titlebar class="absolute top-0 left-0 right-0"></app-titlebar>
         <div class="absolute top-16 left-0 right-0 bottom-0" >
+          <ng-progress #progressBar></ng-progress>
         <router-outlet ></router-outlet>
         </div>
       </div>
   </div> 
   <div class="drawer-side">
-
     <label for="my-drawer-2" class="drawer-overlay"></label> 
     <app-sidenav></app-sidenav>  
-
   </div>
 </div>
 </div>
-
 <app-login></app-login>
 <app-register></app-register>

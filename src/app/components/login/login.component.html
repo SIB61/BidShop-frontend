@@ -8,7 +8,7 @@
     </form>
     <div class="modal-action">
     <label for="login" class="btn btn-ghost">Cancel</label>
-    <label for="login" class="btn" [ngClass]="form.invalid? 'btn-disabled':'btn-primary'" (click)="signIn()" >Sign In</label>
+    <button  class="btn" [ngClass]="form.invalid? 'btn-disabled':'btn-primary'" (click)="signIn()" >Sign In</button>
     </div>
   </div>
 </div>

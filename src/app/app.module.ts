@@ -18,6 +18,11 @@ import { CacheInterceptor } from './interceptors/cache.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
 import { RouterModule } from '@angular/router';
+import { CartComponent } from './pages/cart/cart.component';
+import { MyProductsComponent } from './pages/my-products/my-products.component';
+import { NgProgressModule } from 'ngx-progressbar';
+import { AboutUsComponent } from './pages/about-us/about-us.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +33,11 @@ import { RouterModule } from '@angular/router';
     PostAdComponent,
     ProfileComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    CartComponent,
+    MyProductsComponent,
+    AboutUsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -37,19 +46,24 @@ import { RouterModule } from '@angular/router';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    NgProgressModule
+  
   ],
   providers: [NgxImageCompressService,
-     {
+
+    {
       provide:HTTP_INTERCEPTORS,
       useClass:TokenInterceptor,
       multi:true
     },
+
     // {
     //   provide:HTTP_INTERCEPTORS,
     //   useClass:CacheInterceptor,
     //   multi:true
     // },
+
     {
       provide:HTTP_INTERCEPTORS,
       useClass:LoggingInterceptor,

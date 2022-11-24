@@ -3,25 +3,26 @@
   <form [formGroup]="form" class="col-span-full grid grid-cols-2 md:grid-cols-6">
 
    <select formControlName="district" class="select select-bordered" (change)="changeDistrict()" >
-      <option ngValue="" disabled selected>District</option> 
-      <option ngValue="all">All</option>
+      <option value="" disabled selected>District</option> 
+      <option>All</option>
       <option [ngValue]="district.name" *ngFor="let district of districts">{{district.name}}</option>
    </select>
 
    <select formControlName="sub_district" class="select select-bordered ">
       <option value="" disabled selected>SubDistrict</option> 
-      <option ngValue="all">All</option>
+      <option>All</option>
       <option [ngValue]="district.id" *ngFor="let district of selectedSubdistricts">{{district.name}}</option>
    </select>
 
    <select class="select select-bordered" formControlName="order">
-      <option ngValue="" selected disabled>order</option>
+      <option value selected disabled>order</option>
       <option ngValue="asc">Hight to low</option>
       <option ngValue="dsc">Low to heigh</option>
    </select>
 
    <select class="select select-bordered" formControlName="catagory">
-      <option ngValue="" selected disabled>Catagory</option>
+      <option value="" selected disabled>Catagory</option>
+      <option>all</option>
       <option *ngFor="let catagory of catagories$|async" [ngValue]="catagory.id">{{catagory.name}}</option>
    </select>
 
@@ -44,14 +45,10 @@
   </div>
 </div>
 
-<div class="btn-group col-span-full flex" >
-  <button class="btn">first</button>
-  <button class="btn flex-1"></button>
-  <button class="btn">«</button>
-  <button class="btn">Page 22</button>
-  <button class="btn">»</button>
-  <button class="btn flex-1"></button>
-  <button class="btn">last</button>
+<div class="btn-group col-span-full flex justify-center" >
+  <button class="btn btn-ghost" (click)="pre()">«</button>
+    <button class="btn btn-ghost">Page {{pageNumber}}</button>
+  <button class="btn btn-ghost" (click)="next()">»</button>
 </div>
 
 </div>

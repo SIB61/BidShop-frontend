@@ -17,6 +17,7 @@ import { ApiPageResponse } from 'src/app/models/Response.model';
 import { Product } from 'src/app/models/product.model';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ApiEndpoints } from 'src/app/enum/api-endpoints';
+import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -31,12 +32,14 @@ export class HomeComponent {
     order: string;
     catagory: number;
     key: string;
+    pageNumber:number
   }>({
     district: undefined,
     sub_district: undefined,
     order: undefined,
     catagory: undefined,
     key: undefined,
+    pageNumber:1
   });
   searchItems$ = this._searchItems.asObservable();
 
@@ -46,7 +49,7 @@ export class HomeComponent {
 
   products: any[];
 
-  constructor(private http: HttpClient, fb: FormBuilder) {
+  constructor(private http: HttpClient, fb: FormBuilder,private loadingService:LoadingService) {
     console.log(this.districts[1]);
     this.subDistricts.forEach((u) => {
       if (u.district_id == this.districts[1].id) {
@@ -72,15 +75,13 @@ export class HomeComponent {
       if (value.order) params = params.append('OrderByPrices', value.order);
       if (value.order) params = params.append('OrderByPrices', value.order);
       if (value.key) params = params.append('Name', value.key);
-
-      console.log(value)
-
-      console.log("params:", params )
+      if (value.pageNumber) params = params.append('PageNumber', value.pageNumber);
       return this.http
         .get(environment.base_url + 'Home', {
           params: params,
         })
-        .pipe(map((res: ApiPageResponse<Product[]>) => res.data));
+        .pipe(map((res: ApiPageResponse<Product[]>) => res.data),tap(_=>{
+        }));
     })
   );
 
@@ -98,7 +99,7 @@ export class HomeComponent {
         (sb) => sb.district_id === district.id
       );
   }
-
+  pageNumber=1
   search = () => {
     this._searchItems.next({
       district: this.form.value.district,
@@ -106,6 +107,24 @@ export class HomeComponent {
       order: this.form.value.order,
       catagory: this.form.value.catagory,
       key: this.form.value.key,
+      pageNumber:this.pageNumber
     });
   };
+  next(){
+   this.pageNumber = this.pageNumber+1
+    this._searchItems.next({
+      ...this._searchItems.value,
+      pageNumber:this.pageNumber
+    })
+  }
+
+  pre(){
+    if(this.pageNumber>1){
+   this.pageNumber = this.pageNumber-1
+    this._searchItems.next({
+      ...this._searchItems.value,
+      pageNumber:this.pageNumber
+    })
+  }
+  }
 }

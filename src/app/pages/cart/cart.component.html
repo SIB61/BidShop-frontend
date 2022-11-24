@@ -1,4 +1,4 @@
-<div class="overflow-x-auto w-full" *ngIf="data$|async as data">
+<div class="overflow-x-auto w-full flex flex-col justify-center" *ngIf="data$|async as data">
   <table class="table w-full">
     <!-- head -->
     <thead>
@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <!-- row 1 -->
-      <tr *ngFor="let d of data" class="hover" >
+      <tr *ngFor="let d of data" class="hover cursor-pointer" [routerLink]="'/products/'+d.productId" >
         <td>
           {{d.name}} 
         </td>
@@ -38,4 +38,10 @@
     </tfoot>
     
   </table>
+
+<div class="btn-group flex justify-center">
+  <button class="btn btn-ghost" (click)="pre()">«</button>
+    <button class="btn btn-ghost">Page {{pageNumber$|async}}</button>
+  <button class="btn btn-ghost" (click)="next()">»</button>
+</div>
 </div>

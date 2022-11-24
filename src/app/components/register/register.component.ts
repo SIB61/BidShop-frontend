@@ -32,6 +32,9 @@ constructor(fb:FormBuilder, private http:HttpClient){
       console.log(res)
       localStorage.setItem("token",res.data.token)
       localStorage.setItem("user_id",res.data.id)
+      localStorage.setItem('user_name',res.data.name)
+      localStorage.setItem('user_email',res.data.email)
+      window.location.reload()
     }) 
   }
 

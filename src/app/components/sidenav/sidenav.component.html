@@ -5,7 +5,15 @@
         {{nav.title}}
       </label>
       <div class="divider">more</div>
-      <label for="my-drawer-2" class="btn" [ngClass]="router.url === '' ? 'btn-primary':'btn-ghost'">about us</label>
+      <label for="my-drawer-2" class="btn" [ngClass]="router.url === '/about-us' ? 'btn-primary':'btn-ghost'" routerLink="/about-us">about us</label>
+
+
+  <div class="flex-1 flex justify-end flex-col">
+     <div class="divider">profile</div>
+      <h1 class="w-full text-center font-bold my-2">{{name}}</h1>
+      <p class="w-full text-center font-semibold mb-2">{{email}}</p>
+      <button class="btn btn-outline" (click)="logout()">logout</button>
+  </div>
 </div>
 
 

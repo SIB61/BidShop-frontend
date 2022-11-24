@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { map } from 'rxjs';
+import { BehaviorSubject, map, switchMap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -9,9 +9,16 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
-  constructor(private http:HttpClient){
-
+  constructor(private http:HttpClient){}
+  pageNumber$ = new BehaviorSubject(1)
+  data$ = this.pageNumber$.pipe(switchMap((pn:number)=>{
+    return this.http.get(environment.base_url+"Cart",{params:new HttpParams().append('PageNumber',pn)}).pipe(map((res:any)=>res.data))
+  }))
+  pre(){
+    if(this.pageNumber$.value>1)
+    this.pageNumber$.next(this.pageNumber$.value-1)
   }
-  
-  data$ = this.http.get(environment.base_url+"Cart").pipe(map((res:any)=>res.data))
+  next(){
+    this.pageNumber$.next(this.pageNumber$.value+1)
+  }
 }

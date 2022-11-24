@@ -63,7 +63,9 @@ post(){
     formData.append('SubDistrict',formValue.sub_district)
     formData.append('Address',formValue.address)
     formData.append('ProductPhotos',formValue.imageSource)
-    this.http.post(environment.base_url+ApiEndpoints.PostAd,formData).subscribe(res=>console.log(res))
+    this.http.post(environment.base_url+ApiEndpoints.PostAd,formData).subscribe(res=>{
+      this.form.reset()
+    })
   }
 
 }
