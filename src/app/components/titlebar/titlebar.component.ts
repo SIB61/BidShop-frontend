@@ -20,6 +20,7 @@ export class TitlebarComponent {
     {title:"posts",route:"/posts"},
     {title:"cart",route:"/cart"},
     {title:"About Us",route:"/about-us"},
+    {title:"payment",route:"/payment"}
     // {title:"",route:"#"},
     // {title:"Chat",route:"#"},
     // {title:'profile',route:"#"},

@@ -4,6 +4,7 @@ import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { HomeComponent } from './pages/home/home.component';
 import { MyProductsComponent } from './pages/my-products/my-products.component';
+import { PaymentComponent } from './pages/payment/payment.component';
 import { PostAdComponent } from './pages/post-ad/post-ad.component';
 import { ProductViewComponent } from './pages/product-view/product-view.component';
 
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path:'about-us',
     component:AboutUsComponent
+  },
+  {
+    path:'payment',
+    component:PaymentComponent
   }
 ];
 
