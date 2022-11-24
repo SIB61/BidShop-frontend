@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { CartComponent } from './pages/cart/cart.component';
 import { HomeComponent } from './pages/home/home.component';
@@ -24,15 +25,18 @@ const routes: Routes = [
   },
   {
     path:"post-ad",
-    component:PostAdComponent
+    component:PostAdComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'cart',
-    component:CartComponent
+    component:CartComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'posts',
-    component:MyProductsComponent
+    component:MyProductsComponent,
+    canActivate:[AuthGuard]
   },
   {
     path:'about-us',
@@ -40,7 +44,8 @@ const routes: Routes = [
   },
   {
     path:'payment',
-    component:PaymentComponent
+    component:PaymentComponent,
+    canActivate:[AuthGuard]
   }
 ];
 

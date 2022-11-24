@@ -1,1 +1,50 @@
-<p>payment works!</p>
+<div class="overflow-x-auto overflow-y-scroll w-full h-full p-4" *ngIf="data$|async as data">
+  <table class="table w-full h-max overflow-y-scroll">
+    <!-- head -->
+    <thead>
+      <tr>
+        <th>Product Name</th>
+        <th>Owner Name</th>
+        <th>Phone</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody >
+      <!-- row 1 -->
+      <tr *ngFor="let d of data" class="hover cursor-pointer" >
+        <td>
+          {{d.productName}} 
+        </td>
+        <td>
+          {{d.ownner.name}}
+        </td>
+        <td>
+          {{d.ownner.phone}} 
+        </td>
+        <td>{{d.price|currency}}</td>
+        <td>
+         <button class="btn btn-outline" (click)="cancel(d)">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+    <!-- foot -->
+    <tfoot>
+      <!-- <tr> -->
+      <!--   <th>Product Name</th> -->
+      <!--   <th>Asking Price</th> -->
+      <!--   <th>Highest Bid</th> -->
+      <!--   <th>Bidding End date</th> -->
+      <!--   <th></th> -->
+      <!-- </tr> -->
+    </tfoot>
+    
+  </table>
+
+<!-- <div class="btn-group flex justify-center"> -->
+<!--   <button class="btn btn-ghost" (click)="pre()">«</button> -->
+<!--     <button class="btn btn-ghost">Page {{_pageNumber|async}}</button> -->
+<!--   <button class="btn btn-ghost" (click)="next()">»</button> -->
+<!-- </div> -->
+
+</div>

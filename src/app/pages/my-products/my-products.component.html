@@ -1,7 +1,7 @@
 <!-- {{data$|async|json}} -->
 
-<div class="overflow-x-auto overflow-y-scroll w-full h-full" *ngIf="data$|async as data">
-  <table class="table w-full h-full overflow-y-scroll">
+<div class="overflow-x-auto overflow-y-scroll w-full h-full p-4" *ngIf="data$|async as data">
+  <table class="table w-full h-max overflow-y-scroll">
     <!-- head -->
     <thead>
       <tr>
@@ -25,7 +25,8 @@
           <div *ngIf="d.highBidInfo as highBidInfo">
             <div>{{highBidInfo.price | currency }}</div>
             <div>{{highBidInfo.name}}</div>
-            <button class="btn btn-outline" (click)="paymentReq(d)">request payment</button>
+            <button *ngIf="!highBidInfo.requstInfo" class="btn btn-outline" (click)="paymentReq(d)">request payment</button>
+            <span *ngIf="highBidInfo.requstInfo" class="badge badge-success" >payment request sent</span>
           <!-- {{d.highBidInfo|json}} -->
           </div>
           <div *ngIf="!d.highBidInfo">
